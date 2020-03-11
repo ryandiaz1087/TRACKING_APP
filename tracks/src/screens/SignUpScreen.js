@@ -1,22 +1,31 @@
-import React, { useState, useContext } from 'react';
-import { View, StyleSheet, TouchableOpacity } from 'react-native';
-import { Text, Input, Button } from 'react-native-elements';
-import Spacer from '../components/Spacer';
+import React, { useContext } from 'react';
+import { View, StyleSheet } from 'react-native';
+import { NavigationEvents } from 'react-navigation';
 import { Context as AuthContext } from '../context/AuthContext';
+import AuthForm from '../components/AuthForm';
+import NavLink from '../components/NavLink';
 
-const SignUpScreen = ({ navigation }) => {
-  const { state: { errorMessage }, signUp } = useContext(AuthContext);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+const SignUpScreen = () => {
+  const { state: { errorMessage }, signUp, clearErrorMessage } = useContext(AuthContext);
 
   return (
     <View style={styles.container}>
-
-      <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
-        <Spacer>
-          <Text style={styles.link}>Already have an account? Sign in instead.</Text>
-        </Spacer>
-      </TouchableOpacity>
+      <NavigationEvents
+        // Gets called as soon as you INITIATE the transition to another screen onWillFocus={() => {}}
+        // Gets called as soon as you LAND on the other screen onDidFocus={() => {}}
+        // Gets called anytime we're about to navigate away from the current screen
+        onWillBlur={clearErrorMessage}
+      />
+      <AuthForm
+        headerText="Sign Up for Tracker"
+        errorMessage={errorMessage}
+        submitButtonText="Sign Up"
+        onSubmit={signUp}
+      />
+      <NavLink
+        routeName="SignIn"
+        text="Already have an account? Sign in instead."
+      />
     </View>
   );
 }
@@ -32,15 +41,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     marginBottom: 250,
-  },
-  errorMessage: {
-    fontSize: 16,
-    color: 'red',
-    marginLeft: 15,
-    marginTop: 15,
-  },
-  link: {
-    color: 'blue',
   },
 });
 
