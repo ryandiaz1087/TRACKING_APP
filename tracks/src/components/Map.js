@@ -31,12 +31,16 @@ const Map = () => {
       }}
     >
       <Circle
-        center={currentLocation.coords}
         radius={30}
+        center={currentLocation.coords}
         strokeColor="rgba(158, 158, 255, 1.0)"
         fillColor="rgba(158, 158, 255, 0.3)"
       />
-      <Polyline coordinates={points} />
+      <Polyline
+        coordinates={points}
+        strokeColor="#FFFFFF"
+        strokeWidth={6}
+      />
     </MapView>
 
   );
