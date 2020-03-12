@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
 import isNil from 'lodash/isNil';
 import { StyleSheet, ActivityIndicator } from 'react-native';
-import MapView, { Polyline, Circle } from 'react-native-maps';
+import MapView, { Polyline, Circle, PROVIDER_GOOGLE } from 'react-native-maps';
 import { Context as LocationContext } from '../context/LocationContext';
+import mapStyle from '../json/mapStyle.json';
 
 const Map = () => {
   const { state: { currentLocation, locations } } = useContext(LocationContext);
@@ -15,6 +16,8 @@ const Map = () => {
 
   return (
     <MapView
+      provider={PROVIDER_GOOGLE}
+      customMapStyle={mapStyle}
       style={styles.map}
       initialRegion={{
         ...currentLocation.coords,

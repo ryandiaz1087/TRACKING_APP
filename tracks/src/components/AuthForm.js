@@ -88,7 +88,6 @@ const styles = StyleSheet.create({
   },
   button: {
     borderColor: 'white',
-    color: 'white',
   },
   buttonTitle: {
     color: 'white',

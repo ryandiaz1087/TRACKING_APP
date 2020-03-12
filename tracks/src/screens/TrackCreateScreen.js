@@ -1,4 +1,3 @@
-import '../_mockLocation';
 import React, { useContext, useCallback } from 'react';
 import useLocation from '../hooks/useLocation';
 import { Context as LocationContext } from '../context/LocationContext';
@@ -27,7 +26,7 @@ const TrackCreateScreen = ({ isFocused }) => {
 
   return (
     <SafeAreaView forceInset={{ top: 'always' }}>
-      <Text h2>Create a Track</Text>
+      <Text style={styles.title}>Create A Track</Text>
       <Map />
       {errorAlert}
       <TrackForm />
@@ -40,7 +39,16 @@ TrackCreateScreen.navigationOptions = {
   tabBarIcon: <FontAwesome name="plus" size={20} />,
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  title: {
+    backgroundColor: '#2d3436',
+    fontSize: 50,
+    color: 'white',
+    fontWeight: '100',
+    textAlign: 'center',
+    paddingVertical: 10,
+  },
+});
 
 export default withNavigationFocus(TrackCreateScreen);
  
