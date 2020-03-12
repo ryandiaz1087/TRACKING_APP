@@ -17,7 +17,7 @@ const SignUpScreen = () => {
         onWillBlur={clearErrorMessage}
       />
       <AuthForm
-        headerText="Sign Up for Tracker"
+        headerText="Sign Up"
         errorMessage={errorMessage}
         submitButtonText="Sign Up"
         onSubmit={signUp}
@@ -40,7 +40,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    marginBottom: 250,
+    paddingBottom: 250,
+    backgroundColor: '#2d3436',
   },
 });
 

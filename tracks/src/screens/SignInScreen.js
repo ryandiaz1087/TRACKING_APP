@@ -17,7 +17,7 @@ const SignInScreen = () => {
         onWillBlur={clearErrorMessage}
       />
       <AuthForm
-        headerText="Sign In to your Account"
+        headerText="Sign In"
         errorMessage={errorMessage}
         onSubmit={signIn}
         submitButtonText="Sign In"
@@ -40,8 +40,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    marginBottom: 250,
-    backgroundColor: 'black',
+    paddingBottom: 250,
+    backgroundColor: '#2d3436',
   },
 });
 
